@@ -85,3 +85,7 @@ button:hover{
 #start:active{
     color: rgb(12, 237, 12);
 }
+
+#stop:active{
+    color: red;
+}
