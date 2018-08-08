@@ -9,6 +9,7 @@ const controls = document.querySelectorAll(".control");
 const increment = document.querySelectorAll(".increase");
 const decrement = document.querySelectorAll(".decrease");
 
+const sound = document.querySelector(".sound");
 
 var startTime = new Date();     //Global variable for a starting time
 var isOn = false;               //A sentinel value to see if the timer is running
@@ -30,11 +31,9 @@ controls.forEach((ctrl) => {
         }
         if(ctrl.id == "pause"){
             pause();
-            console.log("paused");
         }
         if(ctrl.id == "stop"){
             stop();
-            console.log("stopped");
         }
         //A hard reset of the timer
         if(ctrl.id == "reset"){
@@ -123,6 +122,7 @@ function startTimer(start){
 
         //If the time remaining is less than or equal to 0, change sessions
         if(time.total <= 0){
+            sound.play();   //Play a sound to let the user know when the session is switching
             sessionTracker = (sessionTracker + 1) % 2;          //Update the session tracker
             session.textContent = titleArr[sessionTracker];     //Change the session title accordingly
             //Change display timer accordingly
